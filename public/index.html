@@ -39,7 +39,7 @@
         data.addColumn('number', 'Credit - 1234-2345-3456-4567');
         data.addColumn('number', 'Credit - 1111-2222-3333-4444');
 
-        var loop;
+        var loop = 9;
         var balance;
         var cAcc;
         var dAcc;
@@ -49,7 +49,7 @@
         var month;
 
         var array = [];
-        for (loop = 9; loop<11; loop++){
+        for (loop = 9; loop<12; loop++){
            var array = [];
            if(loop == 9){
               month = "Oct";
@@ -61,7 +61,7 @@
               balance = 5646;
               credit = 1322;
               credit2 = 200;
-           } else {
+           } else if (loop == 11){
              month = "Dec";
               balance = 5646;
               credit = 1322;
@@ -73,7 +73,7 @@
         }
 
 
-        data.addRows(array);
+
 
         var options = {
           chart: {
