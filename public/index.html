@@ -35,33 +35,41 @@
         var data = new google.visualization.DataTable();
 
         data.addColumn('string', 'Month');
-        data.addColumn('number', 'Deposit Balance');
-        data.addColumn('number', 'Credit Balance');
+        data.addColumn('number', 'Deposit - 588967151');
+        data.addColumn('number', 'Credit - 1234-2345-3456-4567');
+        data.addColumn('number', 'Credit - 1111-2222-3333-4444');
 
         var loop;
         var balance;
+        var cAcc;
+        var dAcc;
         var credit;
+        var credit2;
+        var cAcc2;
         var month;
 
         var array = [];
-        for (loop = 11; loop>9; loop--){
+        for (loop = 9; loop<11; loop++){
            var array = [];
-           if(loop == 11){
-              month = "Dec";
-              balance = 1000;
-              credit = 2000;
+           if(loop == 9){
+              month = "Oct";
+              balance = 5646;
+              credit = 1322;
+              credit2 = 100;
            } else if (loop == 10){
               month = "Nov";
-              balance = 1000;
-              credit = 2000;
+              balance = 5646;
+              credit = 1322;
+              credit2 = 200;
            } else {
-              month = "Oct";
-              balance = 1000;
-              credit = 2000;
+             month = "Dec";
+              balance = 5646;
+              credit = 1322;
+              credit2 = 300;
            }
-           array.unshift([month, balance, credit]);
+           array.push([month, balance, credit, credit2]);
 
-        data.addRows(array);
+           data.addRows(array);
         }
 
 
