@@ -22,9 +22,67 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['bar']});
+      google.charts.setOnLoadCallback(drawChart);
+
+
+
+
+
+      function drawChart() {
+        var data = new google.visualization.DataTable();
+
+        data.addColumn('string', 'Month');
+        data.addColumn('number', 'Deposit Balance');
+        data.addColumn('number', 'Credit Balance');
+
+        var loop;
+        var balance;
+        var credit;
+        var month;
+
+        var array = [];
+        for (loop = 11; loop>9; loop--){
+           var array = [];
+           if(loop == 11){
+              month = "Dec";
+              balance = 1000;
+              credit = 2000;
+           } else if (loop == 10){
+              month = "Nov";
+              balance = 1000;
+              credit = 2000;
+           } else {
+              month = "Oct";
+              balance = 1000;
+              credit = 2000;
+           }
+           array.unshift([month, balance, credit]);
+
+        data.addRows(array);
+        }
+
+
+        data.addRows(array);
+
+        var options = {
+          chart: {
+            title: 'Account Balances',
+            subtitle: 'Debit and Credit Balance: Oct - Dec',
+          }
+        };
+
+        var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
+
+        chart.draw(data, google.charts.Bar.convertOptions(options));
+      }
+    </script>
     <title>React App</title>
   </head>
   <body>
+  <div id="columnchart_material" style="width: 800px; height: 500px;"></div>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
     <!--
