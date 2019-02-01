@@ -24,9 +24,9 @@
     -->
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
-      google.charts.load('current', {'packages':['bar']});
+      google.charts.load('current', {'packages':['bar',"corechart"]});
       google.charts.setOnLoadCallback(drawChart);
-
+      google.charts.setOnLoadCallback(drawChart2);
 
 
 
@@ -53,12 +53,12 @@
            var array = [];
            if(loop == 9){
               month = "Oct";
-              balance = 5646;
+              balance = 5121;
               credit = 1322;
               credit2 = 100;
            } else if (loop == 10){
               month = "Nov";
-              balance = 5646;
+              balance = 5217;
               credit = 1322;
               credit2 = 200;
            } else if (loop == 11){
@@ -86,11 +86,37 @@
 
         chart.draw(data, google.charts.Bar.convertOptions(options));
       }
+
+      function drawChart2() {
+      var data = google.visualization.arrayToDataTable([
+          ['Month', 'SG$'],
+          ['Jan', 100],
+          ['Feb', 90],
+          ['Mar', 80],
+          ['Apr', 70],
+          ['May', 80],
+          ['Jun', 120],
+          ['Jul', 130],
+          ['Aug', 120],
+          ['Sep', 10],
+          ['Oct', 90],
+          ['Nov', 120],
+          ['Dec', 100]]);
+
+          var options = {
+          title: 'Monthly Transaction Amounts',
+          legend: { position: 'none' },
+        };
+
+        var chart = new google.charts.Bar(document.getElementById('chart_div'));
+        chart.draw(data, google.charts.Bar.convertOptions(options));
+      }
     </script>
     <title>React App</title>
   </head>
   <body>
   <div id="columnchart_material" style="width: 800px; height: 500px;"></div>
+  <div id="chart_div" style="width: 800px; height: 500px;"></div>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
     <!--
