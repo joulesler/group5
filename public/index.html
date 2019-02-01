@@ -22,9 +22,101 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['bar',"corechart"]});
+      google.charts.setOnLoadCallback(drawChart);
+      google.charts.setOnLoadCallback(drawChart2);
+
+
+
+
+      function drawChart() {
+        var data = new google.visualization.DataTable();
+
+        data.addColumn('string', 'Month');
+        data.addColumn('number', 'Deposit - 588967151');
+        data.addColumn('number', 'Credit - 1234-2345-3456-4567');
+        data.addColumn('number', 'Credit - 1111-2222-3333-4444');
+
+        var loop = 9;
+        var balance;
+        var cAcc;
+        var dAcc;
+        var credit;
+        var credit2;
+        var cAcc2;
+        var month;
+
+        var array = [];
+        for (loop = 9; loop<12; loop++){
+           var array = [];
+           if(loop == 9){
+              month = "Oct";
+              balance = 5121;
+              credit = 1322;
+              credit2 = 100;
+           } else if (loop == 10){
+              month = "Nov";
+              balance = 5217;
+              credit = 1322;
+              credit2 = 200;
+           } else if (loop == 11){
+             month = "Dec";
+              balance = 5646;
+              credit = 1322;
+              credit2 = 300;
+           }
+           array.push([month, balance, credit, credit2]);
+
+           data.addRows(array);
+        }
+
+
+
+
+        var options = {
+          chart: {
+            title: 'Account Balances',
+            subtitle: 'Debit and Credit Balance: Oct - Dec',
+          }
+        };
+
+        var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
+
+        chart.draw(data, google.charts.Bar.convertOptions(options));
+      }
+
+      function drawChart2() {
+      var data = google.visualization.arrayToDataTable([
+          ['Month', 'SG$'],
+          ['Jan', 100],
+          ['Feb', 90],
+          ['Mar', 80],
+          ['Apr', 70],
+          ['May', 80],
+          ['Jun', 120],
+          ['Jul', 130],
+          ['Aug', 120],
+          ['Sep', 10],
+          ['Oct', 90],
+          ['Nov', 120],
+          ['Dec', 100]]);
+
+          var options = {
+          title: 'Monthly Transaction Amounts',
+          legend: { position: 'none' },
+        };
+
+        var chart = new google.charts.Bar(document.getElementById('chart_div'));
+        chart.draw(data, google.charts.Bar.convertOptions(options));
+      }
+    </script>
     <title>React App</title>
   </head>
   <body>
+  <div id="columnchart_material" style="width: 800px; height: 500px;"></div>
+  <div id="chart_div" style="width: 800px; height: 500px;"></div>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
     <!--
